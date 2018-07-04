@@ -3,18 +3,15 @@ import PlaygroundSupport
 import TinyConstraints
 /*: Edges
 
- First we set up our ViewController and the UIView that we want to add the constraints to. */
-let viewController = UIViewController()
-viewController.view.backgroundColor = TinyTheme.backgroundColor
+ First we set up our backgroundView and the view that we want to add the constraints to. */
 
-let containerView = UIView()
-containerView.backgroundColor = TinyTheme.otherViewColor
-viewController.view.addSubview(containerView)
-containerView.size(CGSize(width: 100, height: 100))
+let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 400))
+backgroundView.backgroundColor = TinyTheme.backgroundColor
+PlaygroundPage.current.liveView = backgroundView
 
 let edgesView = UIView()
 edgesView.backgroundColor = TinyTheme.constraintViewColor
-containerView.addSubview(edgesView)
+backgroundView.addSubview(edgesView)
 
 /*:
  Attaching a view to its superview with NSLayoutConstraint:
@@ -27,6 +24,4 @@ containerView.addSubview(edgesView)
 //edgesView.edges(to: containerView)
 
 //: you can also attach the view with insets, if you comment the line above and uncomment this line you can play with the values and see what happens:
-edgesView.edges(to: containerView, insets: UIEdgeInsets(top: 20, left: 10, bottom: -5, right: 0))
-
-PlaygroundPage.current.liveView = viewController
+edgesView.edges(to: backgroundView, insets: UIEdgeInsets(top: 100, left: 50, bottom: -20, right: 0))
